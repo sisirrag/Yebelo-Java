@@ -48,7 +48,9 @@ class Main
         Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","sisir");
         Statement st=con.createStatement();
 
-         ResultSet rs=st.executeQuery("select categorycode,value from fdb where categorycode='"+categorycode+"'");
+         try
+         {
+            ResultSet rs=st.executeQuery("select categorycode,value from fdb where categorycode='"+categorycode+"'");
             while(rs.next())
             {
                 
@@ -56,7 +58,15 @@ class Main
             }
             value=calc(value);
             
-        st.executeUpdate("update fdb set value="+value+"where categorycode='"+categorycode+"'");
+            st.executeUpdate("update fdb set value="+value+"where categorycode='"+categorycode+"'");
+         }
+         catch(Exception e)
+         {
+             System.out.println("Invalid Input");
+         }
+
+
+        
 
     }
 }

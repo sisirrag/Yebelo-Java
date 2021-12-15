@@ -1,0 +1,13 @@
+Requirements
+---------------------------------
+>> Oracle sql server Database
+>> Java 8
+
+STEPS TO FOLLOW
+------------------------------------
+1. Compile and Run the java file CreateTable.java to create required table for the program.
+2. Insert some category code and values in the table
+3. Run the Main program
+4. Enter the categorycode whose value is to be updated
+
+
