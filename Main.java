@@ -7,14 +7,15 @@ class Main
     public static int calc(int x)
     {
             
-        int s;
-        int test=10;       
+        int s,ss;
+        boolean test=false;       
 
         do
         {
             x++;
             s=0;
             int n=x;
+
             
             int d=0;
 
@@ -23,16 +24,17 @@ class Main
                 d=n%10;
                 s+=d;
                 n=n/10;   
-            }
-
-            while(s>test)
+            }     
+            ss=0;
+            while(s>0)
             {
-                test=test*test;
-            }  
-            
+                d=s%10;
+                ss+=d;
+                s=s/10;
+            }              
                   
             
-        }while(s!=test);
+        }while(ss!=1);
 
         return x;
     }
@@ -57,7 +59,7 @@ class Main
             while(rs.next())
             {
                 
-                value=rs.getInt("value");
+                value=rs.getInt("value");  
                 
             }
             System.out.println("old:"+value+"");
@@ -73,7 +75,18 @@ class Main
              System.out.println("Invalid Input");
          }
 
+         37-> 3+7->10 ->1+0 ->1
+         46-> 4+6->10 ->1+0 ->1
+         127->1+2+7->10 ->1
+         136 -> 
 
+            
+        
+
+
+
+        
+        
         
 
     }
