@@ -41,24 +41,32 @@ class Main
 
     public static void main(String args[])
     {
+        int value=0;
         Scanner sc=new Scanner(System.in);
         String categorycode=sc.next();
 
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","sisir");
-        Statement st=con.createStatement();
-
+        
          try
          {
-            ResultSet rs=st.executeQuery("select categorycode,value from fdb where categorycode='"+categorycode+"'");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","5656");
+            Statement st=con.createStatement();
+
+            ResultSet rs=st.executeQuery("select value from fdb where categorycode='"+categorycode+"'");
+            
             while(rs.next())
             {
                 
                 value=rs.getInt("value");
+                
             }
+            System.out.println("old:"+value+"");
             value=calc(value);
+            System.out.println("new:"+value+"");
+            
             
             st.executeUpdate("update fdb set value="+value+"where categorycode='"+categorycode+"'");
+            con.close();
          }
          catch(Exception e)
          {
